@@ -1,6 +1,7 @@
 package com.praveen.designpatterns.creational.builder;
 
 public class Employee {
+	//All final attributes
 	private final int empId;
 	private final String empName;
 	private final double empSalary;
@@ -11,6 +12,23 @@ public class Employee {
 		this.empName = builder.empName;
 		this.empSalary = builder.empSalary;
 		this.empAddress = builder.empAddress;
+	}
+
+	//All getter, and NO setter to provde immutability
+	public int getEmpId() {
+		return empId;
+	}
+
+	public String getEmpName() {
+		return empName;
+	}
+
+	public double getEmpSalary() {
+		return empSalary;
+	}
+
+	public String getEmpAddress() {
+		return empAddress;
 	}
 
 	public static class EmployeeBuilder {
@@ -42,7 +60,7 @@ public class Employee {
 			this.empAddress = empAddress;
 			return this;
 		}
-
+		 //Return the finally constructed  Employee object
 		public Employee build() {
 			Employee emp = new Employee(this);
 			return emp;
