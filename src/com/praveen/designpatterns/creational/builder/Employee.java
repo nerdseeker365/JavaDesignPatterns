@@ -1,18 +1,17 @@
 package com.praveen.designpatterns.creational.builder;
 
 public class Employee {
-	private int empId;
-	private String empName;
-	private double empSalary;
-	private String empAddress;
-
-	public Employee(int empId, String empName, double empSalary, String empAddress) {
-		super();
-		this.empId = empId;
-		this.empName = empName;
-		this.empSalary = empSalary;
-		this.empAddress = empAddress;
-	}
+	private final int empId;
+	private final String empName;
+	private final double empSalary;
+	private final String empAddress;
+	
+	 private Employee(EmployeeBuilder builder) {
+	        this.empId = builder.empId;
+	        this.empName = builder.empName;
+	        this.empSalary = builder.empSalary;
+	        this.empAddress = builder.empAddress;
+	    }
 
 	public static EmployeeBuilder builder() {
 		return new EmployeeBuilder();
@@ -48,7 +47,8 @@ public class Employee {
 		}
 		
 		public Employee build() {
-			return new Employee(empId, empName, empSalary, empAddress);
+			Employee emp= new Employee(this);
+			return emp;
 		}
 	}	
 
