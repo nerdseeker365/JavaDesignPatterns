@@ -5,16 +5,12 @@ public class Employee {
 	private final String empName;
 	private final double empSalary;
 	private final String empAddress;
-	
-	 private Employee(EmployeeBuilder builder) {
-	        this.empId = builder.empId;
-	        this.empName = builder.empName;
-	        this.empSalary = builder.empSalary;
-	        this.empAddress = builder.empAddress;
-	    }
 
-	public static EmployeeBuilder builder() {
-		return new EmployeeBuilder();
+	private Employee(EmployeeBuilder builder) {
+		this.empId = builder.empId;
+		this.empName = builder.empName;
+		this.empSalary = builder.empSalary;
+		this.empAddress = builder.empAddress;
 	}
 
 	public static class EmployeeBuilder {
@@ -26,6 +22,7 @@ public class Employee {
 		EmployeeBuilder() {
 
 		}
+
 		public EmployeeBuilder empId(int empId) {
 			this.empId = empId;
 			return this;
@@ -45,12 +42,12 @@ public class Employee {
 			this.empAddress = empAddress;
 			return this;
 		}
-		
+
 		public Employee build() {
-			Employee emp= new Employee(this);
+			Employee emp = new Employee(this);
 			return emp;
 		}
-	}	
+	}
 
 	@Override
 	public String toString() {
@@ -59,7 +56,8 @@ public class Employee {
 	}
 
 	public static void main(String args[]) {
-		Employee emp= new Employee.EmployeeBuilder().empId(149903).empName("Praveen").empSalary(1000000d).empAddress("Hyderabad").build();
+		Employee emp = new Employee.EmployeeBuilder().empId(149903).empName("Praveen").empSalary(1000000d)
+				.empAddress("Hyderabad").build();
 		System.out.println(emp);
 	}
 
