@@ -4,9 +4,7 @@ public class MammalsFactory extends AnimalFactory {
 
 	@Override
 	public Animal create(String animal) {
-
 		animal = animal.toUpperCase();
-
 		switch (animal) {
 		case "CAT":
 			return new Cat();
